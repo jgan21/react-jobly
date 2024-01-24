@@ -5,14 +5,11 @@ import JoblyApi from "./api";
 
 /** CompanyList - list all companies
  *
- *
  * State:
  * - companiesData
  * [{handle, name, description, numEmployees, logo_Url}, ...]
  *
- *
  * Props:
- *
  *
  * RouteList -> CompanyList -> {CompanyCard, SearchForm}
  */
@@ -23,8 +20,13 @@ function CompanyList() {
   );
   const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(function fetchAlllCompaniesData() {
-    async function fetchAllCompanies() {
+  /** useEffect:
+   * - fetch data for all companies after initial render.
+   * - get all companies matching search term if search term
+  */
+
+  useEffect(function fetchAllCompaniesData() {
+    async function fetchAllCompanies() { //FIXME: fetch vs get.
       const resp = await JoblyApi.getAllCompanies(searchTerm);
       setCompaniesData({ data: resp, isLoading: false });
     }

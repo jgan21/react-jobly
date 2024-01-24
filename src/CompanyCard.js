@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-/**CompnayCard: display info about a single company
+/**CompanyCard: display info about a single company
  *
  * State:
  * -None
