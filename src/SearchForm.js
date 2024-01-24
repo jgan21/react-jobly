@@ -29,7 +29,7 @@ function SearchForm({ handleSearch }) {
   function handleSubmit(evt) {
     evt.preventDefault()
     handleSearch(searchTerm);
-    setSearchTerm("")
+    // setSearchTerm("")
   }
 
   return (

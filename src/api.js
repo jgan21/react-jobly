@@ -68,7 +68,7 @@ class JoblyApi {
   static async getAllJobs(title){
     // console.log("getALlJobs title", title)
     let res;
-    if (title === undefined){
+    if (title === undefined || title === ""){
       res = await this.request("jobs");
     } else {
       res = await this.request("jobs", {title});

@@ -19,23 +19,29 @@ import SearchForm from "./SearchForm";
  */
 
 function JobList(){
-//send company name to JobCardList
 const [jobData, setJobData] = useState({data: null, isLoading:true});
-// const [searchTerm, setSearchTerm] = useState(undefined)
+const [searchTerm, setSearchTerm] = useState("");
+
 console.log("Joblist states:", jobData)
 
+/**useEffect: fetches all jobs after initial render.
+ * -fetches all jobs matching search term if search term changes
+ */
 useEffect(function fetchAllJobData(){
   async function fetchJobs(){
-    const resp = await JoblyApi.getAllJobs();
+    const resp = await JoblyApi.getAllJobs(searchTerm);
     console.log("resp from getAllJobs", resp)
     setJobData({data: resp, isLoading: false});
   }
   fetchJobs();
-},[]);
+},[searchTerm]);
 
-async function handleSearch(term){
-  const resp = await JoblyApi.getAllJobs(term);
-  setJobData({data: resp, isLoading:false});
+/** Updates search term from searchForm
+ * Resets jobdata fo initial state
+ */
+function handleSearch(term){
+  setSearchTerm(term);
+  setJobData({data: null, isLoading: true});
 }
 
 if(jobData.isLoading) return <p>Loading...</p>;
