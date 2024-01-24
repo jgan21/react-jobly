@@ -16,7 +16,10 @@ import SearchForm from "./SearchForm";
  */
 
 function JobList() {
-  const [jobData, setJobData] = useState({ data: null, isLoading: true });
+  const [jobData, setJobData] = useState({
+    data: null,
+    isLoading: true
+  });
   const [searchTerm, setSearchTerm] = useState("");
 
   console.log("Joblist states:", jobData);
@@ -24,23 +27,28 @@ function JobList() {
   /**useEffect: fetches all jobs after initial render.
    * -fetches all jobs matching search term if search term changes
    */
-
-  useEffect(function fetchAllJobData() {
+  //TODO: we are not getting a response-change name
+  useEffect(function fetchJobsOnSearchTermChange() {
     async function fetchJobs() {
       const resp = await JoblyApi.getAllJobs(searchTerm);
-      console.log("resp from getAllJobs", resp);
-      setJobData({ data: resp, isLoading: false });
+      setJobData({
+        data: resp,
+        isLoading: false
+      });
     }
     fetchJobs();
   }, [searchTerm]);
 
   /** Updates search term from searchForm
-   * Resets jobdata fo initial state
+   * Resets jobdata to initial state
    */
 
   function handleSearch(term) {
     setSearchTerm(term);
-    setJobData({ data: null, isLoading: true });
+    setJobData({
+      data: null,
+      isLoading: true
+    });
   }
 
   if (jobData.isLoading) return <p>Loading...</p>;

@@ -24,14 +24,12 @@ function SearchForm({ handleSearch }) {
     setSearchTerm(result);
   }
 
-  //TODO: how to have the parent handle????
   /** Send to parent component to handle when form is submitted  */
   function handleSubmit(evt) {
-    evt.preventDefault()
+    evt.preventDefault();
     handleSearch(searchTerm);
-    // setSearchTerm("")
   }
-
+  //TODO: we don't need to change the name here
   return (
     <div>
       <form className="SearchForm" onSubmit={handleSubmit}>

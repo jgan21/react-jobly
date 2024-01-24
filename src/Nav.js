@@ -16,6 +16,7 @@ function Nav() {
       <NavLink to="/">Jobly</NavLink>
       <NavLink to="/companies">Companies</NavLink>
       <NavLink to="/jobs">Jobs</NavLink>
+      <NavLink to="/companies/baker-santos">Baker Santos</NavLink>
     </nav>
   );
 }

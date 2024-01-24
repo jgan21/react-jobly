@@ -18,34 +18,52 @@ import JobCardList from "./JobCardList";
  * RoutesList -> CompanyDetails -> JobCardList
  */
 
-function CompanyDetails(){
-  //TODO: NotfoundError?? handle it. use <Navigate>
-
-  const [companyInfo, setCompanyInfo] = useState({data: null, isLoading: true});
-  console.log("CompanyDetail state=", companyInfo)
+function CompanyDetails() {
+  const [companyData, setCompanyData] = useState({
+    data: null,
+    isLoading: true,
+    errors: null
+  });
+  //TODO:can destructure companyData here
+  console.log("CompanyDetail state=", companyData);
 
   const { handle } = useParams();
-  console.log("CompanyDetail handle", handle)
+  console.log("CompanyDetail handle", handle);
 
-  /** useEffect: fetches company data that matches the handle given. */
+  /** useEffect: fetches company data that matches the handle given.
+   * -if no matching handle, updates error in companyData
+  */
 
-  useEffect(function fetchCompanyData(){
-    async function fetchCompany(){
-      const resp = await JoblyApi.getCompany(handle);
-      setCompanyInfo({data: resp, isLoading: false});
+  useEffect(function fetchCompanyDataOnMount() {
+    async function fetchCompany() {
+      try {
+        const resp = await JoblyApi.getCompany(handle);
+        setCompanyData({
+          data: resp,
+          isLoading: false,
+          errors: null
+        });
+      } catch (err) {
+        setCompanyData({
+          data: null,
+          isLoading: false,
+          errors: err
+        });
+      }
     }
     fetchCompany();
-  }, [ ]);
+  }, [handle]);
 
-  if (companyInfo.isLoading === true) return <p>Loading...</p>;
+  if (companyData.isLoading === true) return <p>Loading...</p>;
+  else if (companyData.errors) return <b>Oh no! {companyData.errors}</b>;
 
   return (
     <div className="CompanyDetails">
-      <h3>{companyInfo.data.name}</h3>
-      <p>{companyInfo.data.description}</p>
-      <JobCardList jobData={companyInfo.data.jobs} />
+      <h3>{companyData.data.name}</h3>
+      <p>{companyData.data.description}</p>
+      <JobCardList jobData={companyData.data.jobs} />
     </div>
-  )
+  );
 }
 
 export default CompanyDetails;

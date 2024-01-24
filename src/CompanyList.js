@@ -15,27 +15,37 @@ import JoblyApi from "./api";
  */
 
 function CompanyList() {
-  const [companiesData, setCompaniesData] = useState(
-    { data: null, isLoading: true }
-  );
+  const [companiesData, setCompaniesData] = useState({
+    data: null,
+    isLoading: true
+  });
   const [searchTerm, setSearchTerm] = useState("");
 
   /** useEffect:
    * - fetch data for all companies after initial render.
-   * - get all companies matching search term if search term
+   * - fetch all companies matching search term if search term exists
   */
 
-  useEffect(function fetchAllCompaniesData() {
-    async function fetchAllCompanies() { //FIXME: fetch vs get.
+  useEffect(function fetchCompaniesOnSearchTermChange() {
+    async function fetchCompanies() {
       const resp = await JoblyApi.getAllCompanies(searchTerm);
-      setCompaniesData({ data: resp, isLoading: false });
+      setCompaniesData({
+        data: resp,
+        isLoading: false
+      });
     }
-    fetchAllCompanies();
+    fetchCompanies();
   }, [searchTerm]);
 
+  /** Updates search term from searchForm
+   * Resets companies data to initial state
+   */
   function handleSearch(term) {
     setSearchTerm(term);
-    setCompaniesData({ data: null, isLoading: true });
+    setCompaniesData({
+      data: null,
+      isLoading: true
+    });
   }
 
   if (companiesData.isLoading === true) return <p>Loading...</p>;

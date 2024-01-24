@@ -6,17 +6,13 @@ import React from "react";
  * -None
  *
  * Props:
- * -jobData: an object of job data {id, title, salary, equity, companyName}
+ * -job: an object of job data {id, title, salary, equity, companyName}
  *
  * JobCardList -> JobCard
  */
 
-function JobCard({ job }){
-  console.log("JobCard job", job)
+function JobCard({ job }) {
   const { title, salary, equity, companyName } = job;
-  console.log("JobCard title=", title)
-//jobCard in joblist includes company name
-//jobCard in JobList does not
 
   return (
     <div className="JobCard">
@@ -25,7 +21,7 @@ function JobCard({ job }){
       <p>Salary: {salary}</p>
       <p>Equity: {equity}</p>
     </div>
-  )
+  );
 }
 
 export default JobCard;

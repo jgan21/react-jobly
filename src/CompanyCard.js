@@ -14,13 +14,18 @@ import { Link } from "react-router-dom";
 
 function CompanyCard({ companyData }) {
   const { name, description, logoUrl, handle } = companyData;
+  console.log("CompnayCard-logoUrl", logoUrl)
+
   return (
     <Link className="CompanyCard-link" to={`/companies/${handle}`}>
       <div className="CompanyCard-container">
         <h3>{name}</h3>
         <p>{description}</p>
-        {logoUrl &&
-          <img src={logoUrl} alt={name}></img>
+        {logoUrl !== null &&
+          <img
+            src={logoUrl}
+            alt={name}/>
+
         }
       </div>
     </Link>
