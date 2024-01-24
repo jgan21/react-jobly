@@ -24,7 +24,6 @@ function CompanyDetails() {
     isLoading: true,
     errors: null
   });
-  //TODO:can destructure companyData here
   console.log("CompanyDetail state=", companyData);
 
   const { handle } = useParams();
@@ -57,11 +56,13 @@ function CompanyDetails() {
   if (companyData.isLoading === true) return <p>Loading...</p>;
   else if (companyData.errors) return <b>Oh no! {companyData.errors}</b>;
 
+  const { name , description, jobs } = companyData.data;
+
   return (
     <div className="CompanyDetails">
-      <h3>{companyData.data.name}</h3>
-      <p>{companyData.data.description}</p>
-      <JobCardList jobData={companyData.data.jobs} />
+      <h3>{name}</h3>
+      <p>{description}</p>
+      <JobCardList jobData={jobs} />
     </div>
   );
 }

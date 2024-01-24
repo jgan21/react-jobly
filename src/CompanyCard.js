@@ -13,8 +13,9 @@ import { Link } from "react-router-dom";
  */
 
 function CompanyCard({ companyData }) {
+  console.log("CompanyCard companyData=", companyData)
+
   const { name, description, logoUrl, handle } = companyData;
-  console.log("CompnayCard-logoUrl", logoUrl)
 
   return (
     <Link className="CompanyCard-link" to={`/companies/${handle}`}>

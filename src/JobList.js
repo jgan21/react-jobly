@@ -27,12 +27,12 @@ function JobList() {
   /**useEffect: fetches all jobs after initial render.
    * -fetches all jobs matching search term if search term changes
    */
-  //TODO: we are not getting a response-change name
+
   useEffect(function fetchJobsOnSearchTermChange() {
     async function fetchJobs() {
-      const resp = await JoblyApi.getAllJobs(searchTerm);
+      const jobs = await JoblyApi.getAllJobs(searchTerm);
       setJobData({
-        data: resp,
+        data: jobs,
         isLoading: false
       });
     }
