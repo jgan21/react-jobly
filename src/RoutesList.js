@@ -1,6 +1,9 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Homepage from "./Homepage";
-// TODO:import components
+import CompanyList from "./CompanyList";
+import CompanyDetails from "./CompanyDetails";
+import JobList from "./JobList";
+
 
 /** List of routes for Jobly
  *

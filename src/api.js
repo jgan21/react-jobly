@@ -56,18 +56,17 @@ class JoblyApi {
    *
    * If searchTerm is passed, get details on companies matching search.
    */
-  //searchTerm: {minSalary: 98723954} -> minSalary=34542365
-  //TODO:how will we send in searchTerm??
+
   static async getAllCompanies(searchTerm){
-    let res = await this.request("companies", searchTerm);
+    let res = await this.request("companies", {searchTerm});
     return res.companies;
   }
 
 
   /** Get details on all jobs */
-  //TODO:how will we send in searchTerm??
+
   static async getAllJobs(searchTerm){
-    let res = await this.request("jobs", searchTerm);
+    let res = await this.request("jobs", {searchTerm});
     return res.jobs;
   }
 

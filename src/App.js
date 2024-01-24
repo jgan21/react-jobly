@@ -1,4 +1,6 @@
 import{ BrowserRouter } from "react-router-dom";
+import Nav from "./Nav";
+import RoutesList from "./RoutesList";
 
 /**App for Jobly
  *
