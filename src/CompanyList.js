@@ -17,33 +17,40 @@ import JoblyApi from "./api";
  * RouteList -> CompanyList -> {CompanyCard, SearchForm}
  */
 
-function CompanyList(){
-  const [companiesData, setCompaniesData] = useState({data: null, isLoading:true});
-  const [searchTerm, setSearchTerm]= useState("");
+function CompanyList() {
+  const [companiesData, setCompaniesData] = useState(
+    { data: null, isLoading: true }
+  );
+  const [searchTerm, setSearchTerm] = useState("");
 
-  useEffect(function fetchAlllCompaniesData(){
-    async function fetchAllCompanies(){
+  useEffect(function fetchAlllCompaniesData() {
+    async function fetchAllCompanies() {
       const resp = await JoblyApi.getAllCompanies(searchTerm);
-      setCompaniesData({data: resp, isLoading:false});
+      setCompaniesData({ data: resp, isLoading: false });
     }
     fetchAllCompanies();
   }, [searchTerm]);
 
-  function handleSearch(term){
+  function handleSearch(term) {
     setSearchTerm(term);
-    setCompaniesData({data:null, isLoading:true});
+    setCompaniesData({ data: null, isLoading: true });
   }
 
-  if(companiesData.isLoading === true) return <p>Loading...</p>;
+  if (companiesData.isLoading === true) return <p>Loading...</p>;
 
   return (
     <div className="CompanyList">
-      <SearchForm handleSearch={handleSearch}/>
+      <SearchForm handleSearch={handleSearch} />
       <ul>
-        {companiesData.data.map(c => <li key={c.handle}><CompanyCard companyData={c}/></li>)}
+        {companiesData.data.map(c =>
+          <li key={c.handle}>
+            <CompanyCard companyData={c} />
+          </li>
+        )
+        }
       </ul>
     </div>
-  )
+  );
 }
 
 export default CompanyList;
