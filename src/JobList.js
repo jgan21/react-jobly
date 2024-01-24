@@ -16,7 +16,7 @@ import React, { useState } from "react";
  */
 
 function JobList(){
-
+//send company name to JobCardList
 
 }
 

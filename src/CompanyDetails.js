@@ -18,7 +18,7 @@ import React, { useState, useParams } from "react";
  */
 
 function CompanyDetails(){
-
+//do not send company name to JobCardList-it is not needed
 
 }
 
