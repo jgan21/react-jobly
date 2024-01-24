@@ -12,7 +12,14 @@ import React from "react";
  */
 
 function CompanyCard({ companyData }){
-
+  const { name, description, logoUrl } = companyData;
+  return (
+    <div>
+      <h3>{name}</h3>
+      <p>{description}</p>
+      <img src={logoUrl} alt={name}></img>
+    </div>
+  );
 }
 
 export default CompanyCard;
