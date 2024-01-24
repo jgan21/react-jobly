@@ -14,7 +14,7 @@ import React from "react";
 function CompanyCard({ companyData }){
   const { name, description, logoUrl } = companyData;
   return (
-    <div>
+    <div className="CompanyCard">
       <h3>{name}</h3>
       <p>{description}</p>
       <img src={logoUrl} alt={name}></img>
