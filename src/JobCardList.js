@@ -1,4 +1,5 @@
 import React from "react";
+import JobCard from "./JobCard";
 
 /** JobCardList: create list of job cards
  *
@@ -14,7 +15,14 @@ import React from "react";
 
 function JobCardList({ jobData }){
 
-//return: map throug data and render JobCard for each
+return(
+  <div className="JobCardList">
+    <ul>
+      {jobData.map(job => <li key={job.id}><JobCard jobData={jobData}/></li>)}
+    </ul>
+  </div>
+)
+
 }
 
 export default JobCardList;
