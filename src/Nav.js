@@ -9,15 +9,15 @@ import { NavLink } from "react-router-dom";
  * App -> Nav: links to {"/", "/companies", "/jobs" }
  */
 
-function Nav(){
+function Nav() {
 
-return (
-  <nav className="Nav">
-    <NavLink to="/">Jobly</NavLink>
-    <NavLink to="/companies">Companies</NavLink>
-    <NavLink to="/jobs">Jobs</NavLink>
-  </nav>
-)
+  return (
+    <nav className="Nav">
+      <NavLink to="/">Jobly</NavLink>
+      <NavLink to="/companies">Companies</NavLink>
+      <NavLink to="/jobs">Jobs</NavLink>
+    </nav>
+  );
 }
 
 

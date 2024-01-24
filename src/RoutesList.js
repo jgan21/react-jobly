@@ -1,4 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import Homepage from "./Homepage";
 // TODO:import components
 
 /** List of routes for Jobly
@@ -9,6 +10,7 @@ import { Routes, Route, Navigate } from "react-router-dom";
  *
  * App -> RoutesList
 */
+
 function RoutesList(){
 
   return(
@@ -21,7 +23,7 @@ function RoutesList(){
         <Route path="*" element={<Navigate to="/"/>}/>
       </Routes>
     </div>
-  )
+  );
 }
 
 export default RoutesList;
