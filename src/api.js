@@ -57,8 +57,14 @@ class JoblyApi {
    * If searchTerm is passed, get details on companies matching search.
    */
 
-  static async getAllCompanies(searchTerm){
-    let res = await this.request("companies", {searchTerm});
+  static async getAllCompanies(nameLike){
+    let res;
+
+    if (nameLike === undefined || nameLike === ""){
+      res = await this.request("companies");
+    } else {
+      res = await this.request("companies", {nameLike})
+    }
     return res.companies;
   }
 
