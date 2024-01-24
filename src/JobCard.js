@@ -11,8 +11,10 @@ import React from "react";
  * JobCardList -> JobCard
  */
 
-function JobCard({ jobData }){
-  const{ title, salary, equity, companyName } = jobData;
+function JobCard({ job }){
+  console.log("JobCard job", job)
+  const { title, salary, equity, companyName } = job;
+  console.log("JobCard title=", title)
 //jobCard in joblist includes company name
 //jobCard in JobList does not
 

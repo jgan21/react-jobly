@@ -21,9 +21,8 @@ import SearchForm from "./SearchForm";
 function JobList(){
 //send company name to JobCardList
 const [jobData, setJobData] = useState({data: null, isLoading:true});
-// const [searchTerm, setSearchTerm] = useState("");
-
-// console.log("Joblist states:", jobData, searchTerm)
+// const [searchTerm, setSearchTerm] = useState(undefined)
+console.log("Joblist states:", jobData)
 
 useEffect(function fetchAllJobData(){
   async function fetchJobs(){
@@ -37,7 +36,6 @@ useEffect(function fetchAllJobData(){
 async function handleSearch(term){
   const resp = await JoblyApi.getAllJobs(term);
   setJobData({data: resp, isLoading:false});
-  // setSearchTerm(term);
 }
 
 if(jobData.isLoading) return <p>Loading...</p>;
@@ -45,7 +43,7 @@ if(jobData.isLoading) return <p>Loading...</p>;
 return (
   <div className="JobList">
     <SearchForm handleSearch={handleSearch} />
-    <JobCardList jobData={jobData}/>
+    <JobCardList jobData={jobData.data}/>
   </div>
 )
 

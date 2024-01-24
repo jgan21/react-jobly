@@ -14,11 +14,12 @@ import JobCard from "./JobCard";
 */
 
 function JobCardList({ jobData }){
+  console.log("JobCardList jobData=", jobData )
 
 return(
   <div className="JobCardList">
     <ul>
-      {jobData.map(job => <li key={job.id}><JobCard jobData={jobData}/></li>)}
+      {jobData.map(job => <li key={job.id}><JobCard job={job}/></li>)}
     </ul>
   </div>
 )
