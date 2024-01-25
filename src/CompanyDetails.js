@@ -36,9 +36,9 @@ function CompanyDetails() {
   useEffect(function fetchCompanyDataOnMount() {
     async function fetchCompany() {
       try {
-        const resp = await JoblyApi.getCompany(handle);
+        const company = await JoblyApi.getCompany(handle);
         setCompanyData({
-          data: resp,
+          data: company,
           isLoading: false,
           errors: null
         });

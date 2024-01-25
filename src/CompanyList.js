@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import SearchForm from "./SearchForm";
 import CompanyCard from "./CompanyCard";
 import JoblyApi from "./api";
+import debounce from "lodash/debounce";
 
 /** CompanyList - list all companies
  *
