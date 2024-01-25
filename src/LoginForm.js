@@ -42,6 +42,7 @@ function LoginForm({ login }) {
       <label htmlFor="Login-password">Password:</label>
       <input
         id="Login-password"
+        type="password"
         name="password"
         value={formData.password}
         onChange={handleChange}>
