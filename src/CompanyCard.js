@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
  */
 
 function CompanyCard({ companyData }) {
-  console.log("CompanyCard companyData=", companyData)
+  console.debug("CompanyCard companyData=", companyData)
 
   const { name, description, logoUrl, handle } = companyData;
 

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import SearchForm from "./SearchForm";
 import CompanyCard from "./CompanyCard";
 import JoblyApi from "./api";
@@ -21,6 +21,8 @@ function CompanyList() {
     isLoading: true
   });
   const [searchTerm, setSearchTerm] = useState("");
+  console.log("CompaniesDats length", searchTerm)
+
 
   /** useEffect:
    * - fetch data for all companies after initial render.
@@ -48,20 +50,32 @@ function CompanyList() {
       isLoading: true
     });
   }
+  //component rerendered after setSearchTerm was called.
+  //our searchForm unmounted becuase isLoading was set to true, then remounted with initial searchTerm state
 
-  if (companiesData.isLoading === true) return <p>Loading...</p>;
+  // const safeHandleSearch = useCallback(handleSearch);
+  // if(companiesData.isLoading) return  <p>Loading...</p>;
 
   return (
     <div className="CompanyList">
       <SearchForm handleSearch={handleSearch} />
-      <ul>
+      {companiesData.isLoading && <p>Loading...</p>};
+      {/* <ul>
         {companiesData.data.map(c =>
           <li key={c.handle}>
             <CompanyCard companyData={c} />
           </li>
         )
         }
-      </ul>
+      </ul> */}
+      {!companiesData.isLoading && <ul>
+        {companiesData.data.map(c =>
+          <li key={c.handle}>
+            <CompanyCard companyData={c} />
+          </li>
+        )
+        }
+      </ul>}
     </div>
   );
 }

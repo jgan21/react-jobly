@@ -1,4 +1,4 @@
-import React, { useState, useMemo, useCallback } from "react";
+import React, { useState, useEffect, useMemo, useCallback } from "react";
 import debounce from "lodash/debounce";
 
 /**SearchForm: form for handling search input.
@@ -13,27 +13,29 @@ import debounce from "lodash/debounce";
  */
 
 function SearchForm({ handleSearch }) {
-  console.log("SearchForm prop=", handleSearch);
+  // console.log("SearchForm prop=", handleSearch);
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  // console.log("SeachForm state=", searchTerm);
+  console.log("SeachForm state=", searchTerm);
 
   /** Handle updates from form input. */
-  // function handleChange(evt) {
-  //   const result = evt.target.value
-  //   setSearchTerm(result);
-    // console.log("evt.target.value=", evt.target.value)
-  // }
+  function handleChange(evt) {
+    const result = evt.target.value;
+    setSearchTerm(result);
 
-  /** Send to parent component to handle when form is submitted  */
-  function handleSubmit(evt) {
-    // evt.preventDefault();
-    handleSearch(searchTerm)
+    debouncedHandleSearch(result);
   }
 
-  const debouncedHandleSearch = useMemo(() => {
-    return debounce(handleSubmit, 500)});
+  /** Send to parent component to handle when form is submitted  */
+
+  const debouncedHandleSearch = debounce(handleSearch, 500);
+
+  // console.log("debouncedHandleSearch", debouncedHandleSearch);
+
+  // useEffect(function cancelDebounce(){
+  //  return debouncedHandleSearch.cancel();
+  // }, []);
 
   return (
     <div>
@@ -41,12 +43,12 @@ function SearchForm({ handleSearch }) {
         <input
           className="SearchForm-input"
           type="text"
-          name={e => e.target.value}
+          name="search"
           placeholder="Enter search term.."
-          value={e => e.target.value}
-          onChange={e => debouncedHandleSearch(e.target.value)}>
+          value={searchTerm}
+          onChange={handleChange}>
         </input>
-        <button className="SearchForm-btn">Submit</button>
+        {/* <button className="SearchForm-btn">Submit</button> */}
       </form>
     </div>
   );
