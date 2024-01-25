@@ -84,6 +84,12 @@ class JoblyApi {
   }
 
   // obviously, you'll add a lot here ...
+
+  //make req to get token
+
+  //req to login
+
+  //req to signup
 }
 
 export default JoblyApi;
