@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import "./Nav.css"
 
 /** Nav: links to each endpoint.
  *
@@ -14,8 +15,8 @@ function Nav() {
   return (
     <nav className="Nav">
       <NavLink to="/">Jobly</NavLink>
-      <NavLink to="/companies">Companies</NavLink>
-      <NavLink to="/jobs">Jobs</NavLink>
+      <NavLink className="Nav-right" to="/companies">Companies</NavLink>
+      <NavLink className="Nav-right" to="/jobs">Jobs</NavLink>
     </nav>
   );
 }
