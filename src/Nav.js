@@ -20,7 +20,7 @@ function Nav({ logout }) {
   if (currUser) {
     return (
       <nav className="Nav">
-        <NavLink to="/">Jobly</NavLink>
+        <NavLink className="Nav-left" to="/">Jobly</NavLink>
         <NavLink className="Nav-right" to="/companies">Companies</NavLink>
         <NavLink className="Nav-right" to="/jobs">Jobs</NavLink>
         <NavLink className="Nav-right" to="/profile">Profile</NavLink>
@@ -32,7 +32,7 @@ function Nav({ logout }) {
   } else {
     return (
       <nav className="Nav">
-        <NavLink to="/">Jobly</NavLink>
+        <NavLink className="Nav-left" to="/">Jobly</NavLink>
         <NavLink className="Nav-right" to="/login">Login</NavLink>
         <NavLink className="Nav-right" to="/signup">Sign Up</NavLink>
       </nav>

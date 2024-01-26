@@ -18,15 +18,14 @@ function JobCardList({ jobData }) {
 
   return (
     <div className="JobCardList">
-      <ul>
-        {jobData.map(job => (
-          <li key={job.id}>
-            <JobCard job={job} />
-          </li>))}
-      </ul>
-    </div>
+      {jobData.map(job => (
+        <JobCard
+          key={job.id}
+          job={job}
+        />
+      ))}
+    </div >
   );
-
 }
 
 export default JobCardList;

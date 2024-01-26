@@ -1,13 +1,13 @@
 nav {
+  display: flex;
+  flex-direction: row;
   background-color: white;
   border-bottom: 2px solid rgb(234, 227, 227);
   padding: 4px 10px 4px 10px;
-  font-size: large;
 }
 
 nav a {
   padding: 0.5em;
-  display: inline-block;
   text-decoration: none;
 }
 
@@ -17,8 +17,13 @@ nav a.active {
   font-weight: bold;
 }
 
-.Nav-right {
-  float: right;
-  width: 5em;
+.Nav-left {
+  display: flex;
+  justify-content: space-between;
+  width: 82%;
+  font-size:large
 }
 
+.Nav-right {
+  font-size: medium;
+}
