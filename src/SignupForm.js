@@ -14,8 +14,6 @@ import { useNavigate } from "react-router-dom";
  */
 
 
-//TODO: catch error after code review.
-
 function SignupForm({ signup }) {
   const initialState = {
     username: "",
@@ -25,6 +23,7 @@ function SignupForm({ signup }) {
     email: "",
   };
   const [formData, setFormData] = useState(initialState);
+  const [formErrors, setFormErrors] = useState([]);
   const navigate = useNavigate();
 
   /** hanldes input changes and updates state of formData */
@@ -42,12 +41,19 @@ function SignupForm({ signup }) {
    * updates state of formData to intial state
    */
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    signup(formData);
-    setFormData(initialState);
-    navigate("/");
+    try{
+      await signup(formData);
+      setFormData(initialState);
+      navigate("/");
+    }catch(err){
+      console.log("error in handleSubmit", err)
+      setFormErrors(err)
+    }
+
   }
+  console.log("FormErrors:", formErrors)
 
   return (
     <form className="SignupForm" onSubmit={handleSubmit}>
@@ -88,6 +94,8 @@ function SignupForm({ signup }) {
         value={formData.email}
         onChange={handleChange}>
       </input>
+
+      {formErrors.length > 0 && <div><b>{formErrors}</b></div>}
       <button>Submit</button>
     </form>
   );
