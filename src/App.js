@@ -21,72 +21,74 @@ function App() {
   const [currUser, setCurrUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem('token'));
 
-  console.log("App currUser state=", currUser)
-  console.log("App token state=", token)
+  console.log("App currUser state=", currUser);
+  console.log("App token state=", token);
 
-  useEffect(function getUserInfoOnTokenChange(){
-    async function getUserInfo(){
-      if (token){
+  /** If there is a token, get user info and set state of currUser */
+
+  useEffect(function getUserInfoOnTokenChange() {
+    async function getUserInfo() {
+      if (token) {
         const { username } = jwtDecode(token);
         JoblyApi.token = token;
-        console.log("getUserInfo username=", username)
+
         let user = await JoblyApi.getUser(username);
-        setCurrUser({...user});
-        console.log("getUserInfo currUser", currUser)
+        setCurrUser({ ...user });
       }
     }
     getUserInfo();
-  }, [token])
+  }, [token]);
 
   /** login: handles login from LoginForm.
    * -Calls JoblyApi to retrieve user information
    * -updates state of currUser
   */
   async function login(userData) {
-    try {
-      let token = await JoblyApi.login(userData);
-      let user = await JoblyApi.getUser(userData.username);
-      setCurrUser({...user});
-      setToken(token);
-      localStorage.setItem('token', token);
-    } catch (err) {
-      //errors to alert box
-      console.log("error from login", err);
-    }
+    let token = await JoblyApi.login(userData);
+    setToken(token);
+    localStorage.setItem('token', token);
+
+    let user = await JoblyApi.getUser(userData.username);
+    setCurrUser({ ...user });
+
   }
 
   /** signup: handles signup from SignUp form.
    * -Calls Joblyapi to retrieve user information
    * -updates state of currUser
-    */
+   * -updates state of token and sets token in local storage
+   */
+
   async function signup(userData) {
-    try {
-      let token = await JoblyApi.signup(userData);
-      let user = await JoblyApi.getUser(userData.username);
-      setCurrUser({...user});
-      setToken(token);
-      localStorage.setItem('token', token);
-    } catch (err) {
-      //errors to alert-box
-      console.log("error from signup", err);
-    }
+    let token = await JoblyApi.signup(userData);
+    setToken(token);
+    localStorage.setItem('token', token);
+
+
+    let user = await JoblyApi.getUser(userData.username);
+    setCurrUser({ ...user });
+
   }
-  console.log("Curr user after signup:", currUser)
 
   /** logout: handles logout click from nav
    * -updates currUser to null
+   * -updates token to null and removes token from local storage
    */
-  function logout(){
+
+  function logout() {
     setCurrUser(null);
+
+    setToken(null);
     localStorage.removeItem('token');
+    JoblyApi.logout();
   }
 
   return (
     <div className="App">
       <BrowserRouter>
-        <userContext.Provider value ={{currUser}}>
-          <Nav logout={logout}/>
-          <RoutesList login={login} signup={signup}/>
+        <userContext.Provider value={{ currUser }}>
+          <Nav logout={logout} />
+          <RoutesList login={login} signup={signup} />
         </userContext.Provider>
       </BrowserRouter>
     </div>
