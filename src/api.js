@@ -13,9 +13,9 @@ class JoblyApi {
   // We're providing a token you can use to interact with the backend API
   // DON'T MODIFY THIS TOKEN
   static token;
-    // static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    // "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    // "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+  // static token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+  // "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+  // "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
   static async request(endpoint, data = {}, method = "GET") {
     const url = new URL(`${BASE_URL}/${endpoint}`);
@@ -58,13 +58,13 @@ class JoblyApi {
    * If searchTerm is passed, get details on companies matching search.
    */
 
-  static async getAllCompanies(nameLike){
+  static async getAllCompanies(nameLike) {
     let res;
 
-    if (nameLike === undefined || nameLike === ""){
+    if (nameLike === undefined || nameLike === "") {
       res = await this.request("companies");
     } else {
-      res = await this.request("companies", {nameLike})
+      res = await this.request("companies", { nameLike });
     }
     return res.companies;
   }
@@ -72,30 +72,34 @@ class JoblyApi {
 
   /** Get details on all jobs */
 
-  static async getAllJobs(title){
+  static async getAllJobs(title) {
     // console.log("getALlJobs title", title)
     let res;
-    if (title === undefined || title === ""){
+    if (title === undefined || title === "") {
       res = await this.request("jobs");
     } else {
-      res = await this.request("jobs", {title});
+      res = await this.request("jobs", { title });
     }
-    console.log("getAllJobs", res)
+    console.log("getAllJobs", res);
     return res.jobs;
   }
 
-  // obviously, you'll add a lot here ...
-
-  static async getUser(username){
+  static async getUser(username) {
     let resp = await this.request(`users/${username}`);
 
     return resp;
   }
 
   //req to login
+  static async login(userData){
+    let resp = await this.request("auth/token", userData, "POST");
+    JoblyApi.token = resp.token;
+    return resp.token;
+  }
+
 
   //req to signup
-  static async signup(userData){
+  static async signup(userData) {
     let resp = await this.request("auth/register", userData, "POST");
     JoblyApi.token = resp.token;
 
@@ -104,6 +108,9 @@ class JoblyApi {
   }
 
   //would need a logout function to clear token
+  static logout(){
+    JoblyApi.token = "";
+  }
 }
 
 export default JoblyApi;

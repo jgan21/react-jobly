@@ -1,4 +1,6 @@
 import React from "react";
+import { useContext } from "react";
+import userContext from "./userContext";
 
 /** Renders Homepage with a simple welcome message.
  *
@@ -12,11 +14,16 @@ import React from "react";
  * RoutesList -> Homepage
  */
 
+//TODO: add buttons -> call to action
+
 function Homepage(){
+  const { currUser } = useContext(userContext);
+
   return (
     <div>
       <h1>Jobly</h1>
       <h3>All the jobs in one, convenient place.</h3>
+      {currUser && <h1>{`Welcome ${currUser.user.firstName}`}</h1>}
     </div>
   );
 }

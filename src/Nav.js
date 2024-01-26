@@ -14,21 +14,22 @@ import userContext from "./userContext";
  */
 
 function Nav({ logout }) {
-  // const { currUser } = useContext(userContext);
+  const { currUser } = useContext(userContext);
+  console.log("Nav currUser=", currUser)
 
-  // if (currUser) {
-  //   return (
-  //     <nav className="Nav">
-  //       <NavLink className="Nav-right" to="/companies">Companies</NavLink>
-  //       <NavLink className="Nav-right" to="/jobs">Jobs</NavLink>
-  //       <NavLink className="Nav-right" to="/profile">Profile</NavLink>
-  //     //TODO:
-  //       <NavLink className="Nav-right" to="/logout" logout={logout}>
-  //         Logout {`${currUser.firstName}`}
-  //       </NavLink>
-  //     </nav>
-  //   );
-  // } else {
+  if (currUser) {
+    return (
+      <nav className="Nav">
+        <NavLink to="/">Jobly</NavLink>
+        <NavLink className="Nav-right" to="/companies">Companies</NavLink>
+        <NavLink className="Nav-right" to="/jobs">Jobs</NavLink>
+        <NavLink className="Nav-right" to="/profile">Profile</NavLink>
+        <NavLink className="Nav-right" to="/" onClick={logout}>
+          {`Logout ${currUser.user.firstName}`}
+        </NavLink>
+      </nav>
+    );
+  } else {
     return (
       <nav className="Nav">
         <NavLink to="/">Jobly</NavLink>
@@ -37,6 +38,6 @@ function Nav({ logout }) {
       </nav>
     );
   }
-// }
+}
 
 export default Nav;

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 /**Displays login form.
  *
@@ -13,6 +14,8 @@ import React, { useState } from "react";
 
 function LoginForm({ login }) {
   const initialState = { username: "", password: "" };
+  // TODO: add Error state
+  const navigate = useNavigate();
 
   const [formData, setFormData] = useState(initialState);
 
@@ -26,12 +29,16 @@ function LoginForm({ login }) {
   }
   function handleSubmit(evt) {
     evt.preventDefault();
+    //TODO: wrapt this is try catch
     login(formData);
     setFormData(initialState);
+    navigate("/");
   }
+
 
   return (
     <form className="LoginForm" onSubmit={handleSubmit}>
+      {/* TODO: Add conditional statements to check for errors*/}
       <label htmlFor="Login-username">Username:</label>
       <input
         id="Login-username"
