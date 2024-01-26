@@ -73,7 +73,6 @@ class JoblyApi {
   /** Get details on all jobs */
 
   static async getAllJobs(title) {
-    // console.log("getALlJobs title", title)
     let res;
     if (title === undefined || title === "") {
       res = await this.request("jobs");
@@ -84,13 +83,18 @@ class JoblyApi {
     return res.jobs;
   }
 
+  /** Returns user information about specific user:
+   *  { username, firstName, lastName, email, isAdmin, jobs }
+   */
+
   static async getUser(username) {
     let resp = await this.request(`users/${username}`);
 
     return resp;
   }
 
-  //req to login
+  /**Get token from login and set JoblyApi token */
+
   static async login(userData){
     let resp = await this.request("auth/token", userData, "POST");
     JoblyApi.token = resp.token;
@@ -98,16 +102,16 @@ class JoblyApi {
   }
 
 
-  //req to signup
+  /** Get token from signup and set JoblyApi token */
+
   static async signup(userData) {
     let resp = await this.request("auth/register", userData, "POST");
     JoblyApi.token = resp.token;
-
-    //might not need this return
     return resp.token;
   }
 
-  //would need a logout function to clear token
+  /** Clear JoblyApi token upon logout */
+
   static logout(){
     JoblyApi.token = "";
   }

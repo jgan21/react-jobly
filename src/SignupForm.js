@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+
 
 /** Display signup form.
  *
@@ -23,6 +25,9 @@ function SignupForm({ signup }) {
     email: "",
   };
   const [formData, setFormData] = useState(initialState);
+  const navigate = useNavigate();
+
+  /** hanldes input changes and updates state of formData */
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -33,10 +38,15 @@ function SignupForm({ signup }) {
     ));
   }
 
+  /** handles submit. Calls signup function in App and
+   * updates state of formData to intial state
+   */
+
   function handleSubmit(evt) {
     evt.preventDefault();
     signup(formData);
     setFormData(initialState);
+    navigate("/");
   }
 
   return (

@@ -51,12 +51,13 @@ function JobList() {
     });
   }
 
-  if (jobData.isLoading) return <p>Loading...</p>;
 
   return (
     <div className="JobList">
       <SearchForm handleSearch={handleSearch} />
-      <JobCardList jobData={jobData.data} />
+      {jobData.isLoading
+        ? <p>Loading...</p>
+        : <JobCardList jobData={jobData.data} />}
     </div>
   );
 }

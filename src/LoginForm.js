@@ -14,10 +14,11 @@ import { useNavigate } from "react-router-dom";
 
 function LoginForm({ login }) {
   const initialState = { username: "", password: "" };
-  // TODO: add Error state
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState(initialState);
+
+  /** hanldes input changes and updates state of formData */
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -27,9 +28,13 @@ function LoginForm({ login }) {
     }
     ));
   }
+
+  /** handles submit. Calls signup function in App and
+   * updates state of formData to intial state.
+   */
+
   function handleSubmit(evt) {
     evt.preventDefault();
-    //TODO: wrapt this is try catch
     login(formData);
     setFormData(initialState);
     navigate("/");
@@ -38,7 +43,6 @@ function LoginForm({ login }) {
 
   return (
     <form className="LoginForm" onSubmit={handleSubmit}>
-      {/* TODO: Add conditional statements to check for errors*/}
       <label htmlFor="Login-username">Username:</label>
       <input
         id="Login-username"

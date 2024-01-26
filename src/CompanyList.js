@@ -21,7 +21,7 @@ function CompanyList() {
     isLoading: true
   });
   const [searchTerm, setSearchTerm] = useState("");
-  console.log("CompaniesDats length", searchTerm)
+  console.log("CompaniesDats length", searchTerm);
 
 
   /** useEffect:
@@ -50,32 +50,20 @@ function CompanyList() {
       isLoading: true
     });
   }
-  //component rerendered after setSearchTerm was called.
-  //our searchForm unmounted becuase isLoading was set to true, then remounted with initial searchTerm state
-
-  // const safeHandleSearch = useCallback(handleSearch);
-  // if(companiesData.isLoading) return  <p>Loading...</p>;
 
   return (
     <div className="CompanyList">
       <SearchForm handleSearch={handleSearch} />
-      {companiesData.isLoading && <p>Loading...</p>};
-      {/* <ul>
-        {companiesData.data.map(c =>
-          <li key={c.handle}>
-            <CompanyCard companyData={c} />
-          </li>
-        )
-        }
-      </ul> */}
-      {!companiesData.isLoading && <ul>
-        {companiesData.data.map(c =>
-          <li key={c.handle}>
-            <CompanyCard companyData={c} />
-          </li>
-        )
-        }
-      </ul>}
+      {companiesData.isLoading
+        ? <p>Loading...</p>
+        : <ul>
+          {companiesData.data.map(c =>
+            <li key={c.handle}>
+              <CompanyCard companyData={c} />
+            </li>
+          )
+          }
+        </ul>}
     </div>
   );
 }
