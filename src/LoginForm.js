@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
  *
  * State:
  * - formData: {username, password}
+ * - formErrors = ["error message"]
  *
  * Props:
  * - login(): call to App to login user
@@ -17,6 +18,7 @@ function LoginForm({ login }) {
   const navigate = useNavigate();
 
   const [formData, setFormData] = useState(initialState);
+  const [formErrors, setFormErrors] = useState([]);
 
   /** hanldes input changes and updates state of formData */
 
@@ -33,31 +35,40 @@ function LoginForm({ login }) {
    * updates state of formData to intial state.
    */
 
-  function handleSubmit(evt) {
+  async function handleSubmit(evt) {
     evt.preventDefault();
-    login(formData);
-    setFormData(initialState);
-    navigate("/");
+    try {
+      await login(formData);
+      setFormData(initialState);
+      navigate("/");
+    } catch (err) {
+      setFormErrors(err);
+    }
   }
 
 
   return (
     <form className="LoginForm" onSubmit={handleSubmit}>
-      <label htmlFor="Login-username">Username:</label>
-      <input
-        id="Login-username"
-        name="username"
-        value={formData.username}
-        onChange={handleChange}>
-      </input>
-      <label htmlFor="Login-password">Password:</label>
-      <input
-        id="Login-password"
-        type="password"
-        name="password"
-        value={formData.password}
-        onChange={handleChange}>
-      </input>
+      <div>
+        <label htmlFor="Login-username">Username:</label>
+        <input
+          id="Login-username"
+          name="username"
+          value={formData.username}
+          onChange={handleChange}>
+        </input>
+      </div>
+      <div>
+        <label htmlFor="Login-password">Password:</label>
+        <input
+          id="Login-password"
+          type="password"
+          name="password"
+          value={formData.password}
+          onChange={handleChange}>
+        </input>
+      </div>
+      {formErrors.length > 0 && <div><b>{formErrors}</b></div>}
       <button>Submit</button>
     </form>
   );

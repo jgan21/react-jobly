@@ -14,8 +14,6 @@ import "./SearchForm.css";
  */
 
 function SearchForm({ handleSearch }) {
-  // console.log("SearchForm prop=", handleSearch);
-
   const [searchTerm, setSearchTerm] = useState("");
 
   console.log("SeachForm state=", searchTerm);

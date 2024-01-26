@@ -6,11 +6,11 @@ import userContext from "./userContext";
 import JoblyApi from "./api";
 import { jwtDecode } from "jwt-decode";
 
-/**App for Jobly
+/** App for Jobly
  *
  * State:
- * currUser = { username, firstName, lastName, email, isAdmin, jobs }
- *
+ * - currUser = { username, firstName, lastName, email, isAdmin, jobs }
+ * - token = jwt token from API
  *
  * Props: None
  *
@@ -39,10 +39,11 @@ function App() {
     getUserInfo();
   }, [token]);
 
-  /** login: handles login from LoginForm.
-   * -Calls JoblyApi to retrieve user information
-   * -updates state of currUser
+  /** Login: handles login from LoginForm.
+   * - Calls JoblyApi to retrieve user information
+   * - updates state of currUser
   */
+
   async function login(userData) {
     let token = await JoblyApi.login(userData);
     setToken(token);
@@ -50,13 +51,12 @@ function App() {
 
     let user = await JoblyApi.getUser(userData.username);
     setCurrUser({ ...user });
-
   }
 
-  /** signup: handles signup from SignUp form.
-   * -Calls Joblyapi to retrieve user information
-   * -updates state of currUser
-   * -updates state of token and sets token in local storage
+  /** Signup: handles signup from SignUp form.
+   * - Calls Joblyapi to retrieve user information
+   * - updates state of currUser
+   * - updates state of token and sets token in local storage
    */
 
   async function signup(userData) {
@@ -67,12 +67,11 @@ function App() {
 
     let user = await JoblyApi.getUser(userData.username);
     setCurrUser({ ...user });
-
   }
 
-  /** logout: handles logout click from nav
-   * -updates currUser to null
-   * -updates token to null and removes token from local storage
+  /** Logout: handles logout click from nav
+   * - updates currUser to null
+   * - updates token to null and removes token from local storage
    */
 
   function logout() {

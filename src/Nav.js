@@ -5,10 +5,14 @@ import userContext from "./userContext";
 
 /** Nav: links to each endpoint.
  *
- * State: None
+ * State:
+ * - None
  *
  * Props:
  * - logout() : function to call in parent(App)
+ *
+ * Context:
+ * - currUser
  *
  * App -> Nav
  */

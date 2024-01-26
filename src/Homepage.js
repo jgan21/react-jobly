@@ -1,21 +1,21 @@
-import React from "react";
-import { useContext } from "react";
+import React, { useContext }  from "react";
+import { Link } from "react-router-dom";
 import userContext from "./userContext";
 import "./Homepage.css";
 
 /** Renders Homepage with a simple welcome message.
  *
- * State : None
+ * State:
+ * - None
  *
- * Props None
+ * Props:
+ * - None
  *
  * Context:
- * TODO: add currUser
+ * - currUser
  *
  * RoutesList -> Homepage
  */
-
-//TODO: add buttons -> call to action
 
 function Homepage() {
   const { currUser } = useContext(userContext);
@@ -26,6 +26,10 @@ function Homepage() {
         <h1>Jobly</h1>
         <h3>All the jobs in one, convenient place.</h3>
         {currUser && <h1>{`Welcome ${currUser.user.firstName}`}</h1>}
+      </div>
+      <div>
+        <button><Link to="/login">Login</Link></button>
+        <button><Link to="/signup">Sign up</Link></button>
       </div>
     </div>
   );
