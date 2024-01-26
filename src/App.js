@@ -19,7 +19,8 @@ import { jwtDecode } from "jwt-decode";
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
-  const [token, setToken] = useState(localStorage.getItem('token'));
+  //TODO: add comment to indicate that localStorage is initially null
+  const [token, setToken] = useState(localStorage.getItem('token') || null);
 
   console.log("App currUser state=", currUser);
   console.log("App token state=", token);
@@ -49,8 +50,8 @@ function App() {
     setToken(token);
     localStorage.setItem('token', token);
 
-    let user = await JoblyApi.getUser(userData.username);
-    setCurrUser({ ...user });
+    // let user = await JoblyApi.getUser(userData.username);
+    // setCurrUser({ ...user });
   }
 
   /** Signup: handles signup from SignUp form.
@@ -85,7 +86,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <userContext.Provider value={{ currUser }}>
+        <userContext.Provider value={{ currUser, isLoggedIn: currUser }}>
           <Nav logout={logout} />
           <RoutesList login={login} signup={signup} />
         </userContext.Provider>

@@ -114,6 +114,7 @@ class JoblyApi {
 
   static logout(){
     JoblyApi.token = undefined;
+    //FIXME: make sure it is the same as the App state
   }
 }
 

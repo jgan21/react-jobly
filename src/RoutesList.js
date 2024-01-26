@@ -24,16 +24,15 @@ import userContext from "./userContext";
 */
 
 function RoutesList({ login, signup, editProfile }) {
-  const { currUser } = useContext(userContext);
+  const { currUser, isLoggedIn } = useContext(userContext);
   console.log("RoutesList, currUser", currUser);
 
-  if (currUser) {
+  if (isLoggedIn) {
     return (
       <div>
         <Routes>
           <Route path="*" element={<Navigate to="/" />} />
           <Route path="/" element={<Homepage />} />
-
           <Route path="/companies" element={<CompanyList />} />
           <Route path="/companies/:handle" element={<CompanyDetails />} />
           <Route path="/jobs" element={<JobList />} />
