@@ -36,7 +36,9 @@ function RoutesList({ login, signup, editProfile }) {
           <Route path="/companies" element={<CompanyList />} />
           <Route path="/companies/:handle" element={<CompanyDetails />} />
           <Route path="/jobs" element={<JobList />} />
-          <Route path="/profile" element={<ProfileForm editProfile={editProfile} />} />
+          <Route path="/profile"
+                 element={<ProfileForm editProfile={editProfile} />}
+          />
         </Routes>
       </div>
     );
