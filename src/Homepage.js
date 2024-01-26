@@ -5,12 +5,12 @@ import "./Homepage.css";
 
 /** Renders Homepage with a simple welcome message.
  *
- *
  * State : None
- *
  *
  * Props None
  *
+ * Context:
+ * TODO: add currUser
  *
  * RoutesList -> Homepage
  */

@@ -113,7 +113,7 @@ class JoblyApi {
   /** Clear JoblyApi token upon logout */
 
   static logout(){
-    JoblyApi.token = "";
+    JoblyApi.token = undefined;
   }
 }
 

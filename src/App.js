@@ -1,13 +1,16 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import Nav from "./Nav";
 import RoutesList from "./RoutesList";
 import userContext from "./userContext";
 import JoblyApi from "./api";
+import { jwtDecode } from "jwt-decode";
 
 /**App for Jobly
  *
- * State: None
+ * State:
+ * currUser = { username, firstName, lastName, email, isAdmin, jobs }
+ *
  *
  * Props: None
  *
@@ -16,7 +19,24 @@ import JoblyApi from "./api";
 
 function App() {
   const [currUser, setCurrUser] = useState(null);
+  const [token, setToken] = useState(localStorage.getItem('token'));
 
+  console.log("App currUser state=", currUser)
+  console.log("App token state=", token)
+
+  useEffect(function getUserInfoOnTokenChange(){
+    async function getUserInfo(){
+      if (token){
+        const { username } = jwtDecode(token);
+        JoblyApi.token = token;
+        console.log("getUserInfo username=", username)
+        let user = await JoblyApi.getUser(username);
+        setCurrUser({...user});
+        console.log("getUserInfo currUser", currUser)
+      }
+    }
+    getUserInfo();
+  }, [token])
 
   /** login: handles login from LoginForm.
    * -Calls JoblyApi to retrieve user information
@@ -24,9 +44,11 @@ function App() {
   */
   async function login(userData) {
     try {
-      await JoblyApi.login(userData);
+      let token = await JoblyApi.login(userData);
       let user = await JoblyApi.getUser(userData.username);
       setCurrUser({...user});
+      setToken(token);
+      localStorage.setItem('token', token);
     } catch (err) {
       //errors to alert box
       console.log("error from login", err);
@@ -39,9 +61,11 @@ function App() {
     */
   async function signup(userData) {
     try {
-      await JoblyApi.signup(userData);
+      let token = await JoblyApi.signup(userData);
       let user = await JoblyApi.getUser(userData.username);
       setCurrUser({...user});
+      setToken(token);
+      localStorage.setItem('token', token);
     } catch (err) {
       //errors to alert-box
       console.log("error from signup", err);
@@ -54,6 +78,7 @@ function App() {
    */
   function logout(){
     setCurrUser(null);
+    localStorage.removeItem('token');
   }
 
   return (
