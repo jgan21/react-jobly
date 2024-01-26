@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useMemo, useCallback } from "react";
 import debounce from "lodash/debounce";
+import "./SearchForm.css";
 
 /**SearchForm: form for handling search input.
  *

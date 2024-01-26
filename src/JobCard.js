@@ -1,4 +1,5 @@
 import React from "react";
+import "./JobCard.css";
 
 /**JobCard: display info about a single job
  *

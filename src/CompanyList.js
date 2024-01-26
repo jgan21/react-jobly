@@ -58,9 +58,10 @@ function CompanyList() {
         ? <p>Loading...</p>
         : <ul>
           {companiesData.data.map(c =>
-            <li key={c.handle}>
-              <CompanyCard companyData={c} />
-            </li>
+            <CompanyCard
+              key={c.handle}
+              companyData={c}
+            />
           )
           }
         </ul>}
