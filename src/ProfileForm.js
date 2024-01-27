@@ -1,5 +1,7 @@
 import React, { useState, useContext } from "react";
 import userContext from "./userContext";
+import { useNavigate } from "react-router-dom";
+
 
 /** Edit Profile Form.
  *
@@ -18,23 +20,30 @@ import userContext from "./userContext";
 
 function ProfileForm({ editProfile }) {
   const { currUser } = useContext(userContext);
+  const user = currUser.user;
 
-  const [formData, setFormData] = useState(currUser);
+  const [formData, setFormData] = useState(user);
+  const [formErrors, setFormErrors] = useState([]);
+  const navigate = useNavigate();
+
 
   function handleChange(evt) {
-    const {name, value} = evt.target;
-    setFormData(curr => {
+    const { name, value } = evt.target;
+    setFormData(curr => ({
       ...curr,
-      [name] : value
-    })
+      [name]: value
+    }
+    ));
   }
 
-  function handleSubmit(evt) {
-    evt.preventDefault()
-    try{
-
-    }catch {
-
+  async function handleSubmit(evt) {
+    evt.preventDefault();
+    try {
+      await editProfile(formData);
+      setFormData(user);
+      navigate("/")
+    } catch (err){
+      setFormErrors(err);
     }
   }
 
@@ -46,7 +55,8 @@ function ProfileForm({ editProfile }) {
           id="ProfileForm-username"
           name="username"
           value={formData.username}
-          onChange={handleChange}>
+          onChange={handleChange}
+          disabled>
         </input>
       </div>
       <div>
