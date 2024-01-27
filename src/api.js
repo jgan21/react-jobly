@@ -95,7 +95,7 @@ class JoblyApi {
 
   /**Get token from login and set JoblyApi token */
 
-  static async login(userData){
+  static async login(userData) {
     let resp = await this.request("auth/token", userData, "POST");
     JoblyApi.token = resp.token;
     return resp.token;
@@ -112,9 +112,17 @@ class JoblyApi {
 
   /** Clear JoblyApi token upon logout */
 
-  static logout(){
-    JoblyApi.token = undefined;
-    //FIXME: make sure it is the same as the App state
+  static logout() {
+    JoblyApi.token = null;
+  }
+
+  static async editProfile(userData) {
+    const  {firstName, lastName, password, email} = userData;
+
+    let resp = await this.request(
+      `users/${userData.username}`, {firstName, lastName, password, email}, "PATCH");
+
+      return resp;
   }
 }
 

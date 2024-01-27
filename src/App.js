@@ -50,8 +50,6 @@ function App() {
     setToken(token);
     localStorage.setItem('token', token);
 
-    // let user = await JoblyApi.getUser(userData.username);
-    // setCurrUser({ ...user });
   }
 
   /** Signup: handles signup from SignUp form.
@@ -65,9 +63,11 @@ function App() {
     setToken(token);
     localStorage.setItem('token', token);
 
+  }
 
-    let user = await JoblyApi.getUser(userData.username);
-    setCurrUser({ ...user });
+  async function editProfile(userData){
+    let user = await JoblyApi.editProfile(userData);
+    setCurrUser({...user});
   }
 
   /** Logout: handles logout click from nav
@@ -89,7 +89,7 @@ function App() {
       <BrowserRouter>
         <userContext.Provider value={{ currUser, isLoggedIn: currUser }}>
           <Nav logout={logout} />
-          <RoutesList login={login} signup={signup} />
+          <RoutesList login={login} signup={signup} editProfile={editProfile}/>
         </userContext.Provider>
       </BrowserRouter>
     </div>

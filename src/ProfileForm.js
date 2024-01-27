@@ -6,7 +6,8 @@ import { useNavigate } from "react-router-dom";
 /** Edit Profile Form.
  *
  * State:
- * - formData
+ * - formData: {username, password, firstName, lastName, email}
+ * - formErrors = ["error message"]
  *
  *
  * Props:
