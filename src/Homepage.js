@@ -1,4 +1,4 @@
-import React, { useContext }  from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import userContext from "./userContext";
 import "./Homepage.css";
@@ -13,12 +13,14 @@ import "./Homepage.css";
  *
  * Context:
  * - currUser
+ * - isLoggedIn
  *
  * RoutesList -> Homepage
  */
 
 function Homepage() {
-  const { currUser } = useContext(userContext);
+  const { currUser, isLoggedIn } = useContext(userContext);
+
 
   return (
     <div className="Homepage">
@@ -27,10 +29,13 @@ function Homepage() {
         <h3>All the jobs in one, convenient place.</h3>
         {currUser && <h1>{`Welcome ${currUser.user.firstName}`}</h1>}
       </div>
-      <div>
-        <button><Link to="/login">Login</Link></button>
-        <button><Link to="/signup">Sign up</Link></button>
-      </div>
+      {!isLoggedIn &&
+        <div>
+          <button><Link to="/login">Login</Link></button>
+          <button><Link to="/signup">Sign up</Link></button>
+        </div>
+      }
+
     </div>
   );
 }

@@ -27,7 +27,7 @@ function SignupForm({ signup }) {
   const [formErrors, setFormErrors] = useState([]);
   const navigate = useNavigate();
 
-  /** hanldes input changes and updates state of formData */
+  /** handles input changes and updates state of formData */
 
   function handleChange(evt) {
     const { name, value } = evt.target;

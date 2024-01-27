@@ -64,7 +64,7 @@ function App() {
     localStorage.setItem('token', token);
 
   }
-
+  //TODO:add docstring
   async function editProfile(userData){
     let user = await JoblyApi.editProfile(userData);
     setCurrUser({...user});
@@ -87,7 +87,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <userContext.Provider value={{ currUser, isLoggedIn: currUser }}>
+        <userContext.Provider value={{ currUser, isLoggedIn: currUser !== null }}>
           <Nav logout={logout} />
           <RoutesList login={login} signup={signup} editProfile={editProfile}/>
         </userContext.Provider>

@@ -116,13 +116,17 @@ class JoblyApi {
     JoblyApi.token = null;
   }
 
+  //TODO:add docstring
   static async editProfile(userData) {
-    const  {firstName, lastName, password, email} = userData;
+    const { firstName, lastName, password, email } = userData;
 
     let resp = await this.request(
-      `users/${userData.username}`, {firstName, lastName, password, email}, "PATCH");
+      `users/${userData.username}`,
+      { firstName, lastName, password, email },
+      "PATCH"
+    );
 
-      return resp;
+    return resp;
   }
 }
 

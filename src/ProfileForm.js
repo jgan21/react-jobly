@@ -27,6 +27,7 @@ function ProfileForm({ editProfile }) {
   const [formErrors, setFormErrors] = useState([]);
   const navigate = useNavigate();
 
+  /** handles input changes and updates state of formData */
 
   function handleChange(evt) {
     const { name, value } = evt.target;
@@ -37,6 +38,10 @@ function ProfileForm({ editProfile }) {
     ));
   }
 
+    /** handles submit. Calls editProfile function in App and
+   * updates state of formData to intial state
+   */
+  //TODO:give success message instead of navigating home
   async function handleSubmit(evt) {
     evt.preventDefault();
     try {
