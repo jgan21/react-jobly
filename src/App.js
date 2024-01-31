@@ -53,7 +53,7 @@ function App() {
   }
 
   /** Signup: handles signup from SignUp form.
-   * - Calls Joblyapi to retrieve user information
+   * - Calls JoblyApi to retrieve user information
    * - updates state of currUser
    * - updates state of token and sets token in local storage
    */
@@ -64,7 +64,10 @@ function App() {
     localStorage.setItem('token', token);
 
   }
-  //TODO:add docstring
+  /** Edit Profile: handles updating user's profile from Profile form.
+   *  - Calls JoblyApi to update user's profile
+   *  - set currUser to the updated user's profile
+   */
   async function editProfile(userData){
     let user = await JoblyApi.editProfile(userData);
     setCurrUser({...user});

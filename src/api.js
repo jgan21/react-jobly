@@ -116,7 +116,8 @@ class JoblyApi {
     JoblyApi.token = null;
   }
 
-  //TODO:add docstring
+  /** Update user's profile - firstName, lastName, password, and email. */
+
   static async editProfile(userData) {
     const { firstName, lastName, password, email } = userData;
 
