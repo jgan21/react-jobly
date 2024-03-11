@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "./SignupForm.css";
 
 
 /** Display signup form.
@@ -58,8 +59,11 @@ function SignupForm({ signup }) {
   console.log("FormErrors:", formErrors);
 
   return (
-    <form className="SignupForm" onSubmit={handleSubmit}>
-      <div>
+    <div className="SignupForm">
+      <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+        <h2 className="mb-3">Sign Up</h2>
+    <form  onSubmit={handleSubmit}>
+      <div className="mb-3">
         <label htmlFor="Signup-username">Username:</label>
         <input
           id="Signup-username"
@@ -68,7 +72,7 @@ function SignupForm({ signup }) {
           onChange={handleChange}>
         </input>
       </div>
-      <div>
+      <div className="mb-3">
         <label htmlFor="Signup-password">Password:</label>
         <input
           id="Signup-password"
@@ -78,7 +82,7 @@ function SignupForm({ signup }) {
           onChange={handleChange}>
         </input>
       </div>
-      <div>
+      <div className="mb-3">
         <label htmlFor="Signup-firstName">First Name:</label>
 
         <input
@@ -88,7 +92,7 @@ function SignupForm({ signup }) {
           onChange={handleChange}>
         </input>
       </div>
-      <div>
+      <div className="mb-3">
         <label htmlFor="Signup-lastName">Last Name:</label>
         <input
           id="Signup-lastName"
@@ -97,7 +101,7 @@ function SignupForm({ signup }) {
           onChange={handleChange}>
         </input>
       </div>
-      <div>
+      <div className="mb-3">
         <label htmlFor="Signup-email">Email:</label>
         <input
           id="Signup-email"
@@ -108,8 +112,10 @@ function SignupForm({ signup }) {
         </input>
       </div>
       {formErrors.length > 0 && <div><b>{formErrors}</b></div>}
-      <button>Submit</button>
+      <button className="btn btn-primary">Submit</button>
     </form>
+    </div>
+    </div>
   );
 }
 

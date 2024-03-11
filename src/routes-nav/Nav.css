@@ -6,6 +6,10 @@ nav {
   padding: 4px 10px 4px 10px;
 }
 
+.Nav-title {
+  font-size: 1.2rem;
+}
+
 nav ul {
   list-style: none;
   display: flex;

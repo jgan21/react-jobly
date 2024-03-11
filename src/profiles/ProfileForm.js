@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import userContext from "../auth/userContext";
 import { useNavigate } from "react-router-dom";
+import "./ProfileForm.css";
 
 
 /** Edit Profile Form.
@@ -54,8 +55,10 @@ function ProfileForm({ editProfile }) {
   }
 
   return (
-    <form className="ProfileForm" onSubmit={handleSubmit}>
-      <div>
+    <div className="ProfileForm col-md-6 col-lg-4 offset-md-3 offset-lg-4">
+      <h3>Profile</h3>
+    <form onSubmit={handleSubmit}>
+      <div className="mb-3">
         <label htmlFor="ProfileForm-username">Username:</label>
         <input
           id="ProfileForm-username"
@@ -65,7 +68,7 @@ function ProfileForm({ editProfile }) {
           disabled>
         </input>
       </div>
-      <div>
+      <div className="mb-3">
         <label htmlFor="ProfileForm-firstName">First Name:</label>
         <input
           id="ProfileForm-firstName"
@@ -74,7 +77,7 @@ function ProfileForm({ editProfile }) {
           onChange={handleChange}>
         </input>
       </div>
-      <div>
+      <div className="mb-3">
         <label htmlFor="ProfileForm-lastName">Last Name:</label>
         <input
           id="ProfileForm-lastName"
@@ -83,7 +86,7 @@ function ProfileForm({ editProfile }) {
           onChange={handleChange}>
         </input>
       </div>
-      <div>
+      <div className="mb-3">
         <label htmlFor="ProfileForm-email">Email:</label>
         <input
           id="ProfileForm-email"
@@ -94,8 +97,9 @@ function ProfileForm({ editProfile }) {
         </input>
       </div>
       {formErrors.length > 0 && <div><b>{formErrors}</b></div>}
-      <button>Submit</button>
+      <button className="btn btn-primary">Submit</button>
     </form>
+  </div>
   );
 
 }

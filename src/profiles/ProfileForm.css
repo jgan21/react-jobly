@@ -1,0 +1,13 @@
+.ProfileForm {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  text-align: center;
+}
+
+.ProfileForm h3 {
+  color: #ffffff;
+  text-shadow: 2px 2px 5px rgb(52, 48, 47);
+}
