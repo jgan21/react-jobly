@@ -18,8 +18,6 @@ import userContext from "../auth/userContext";
  */
 
 function Nav({ logout }) {
-
-  //TODO: flattening out the currUser.user
   const { currUser } = useContext(userContext);
   console.log("Nav currUser=", currUser)
 
