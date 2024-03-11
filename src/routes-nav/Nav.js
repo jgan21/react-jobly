@@ -26,21 +26,25 @@ function Nav({ logout }) {
   if (currUser) {
     return (
       <nav className="Nav">
-        <NavLink className="Nav-left" to="/">Jobly</NavLink>
-        <NavLink className="Nav-right" to="/companies">Companies</NavLink>
-        <NavLink className="Nav-right" to="/jobs">Jobs</NavLink>
-        <NavLink className="Nav-right" to="/profile">Profile</NavLink>
-        <NavLink className="Nav-right" to="/" onClick={logout}>
-          {`Logout ${currUser.user.firstName}`}
-        </NavLink>
+        <NavLink className="Nav-title" to="/">Jobly</NavLink>
+        <ul>
+          <li><NavLink to="/companies">Companies</NavLink></li>
+          <li><NavLink to="/jobs">Jobs</NavLink></li>
+          <li><NavLink to="/profile">Profile</NavLink></li>
+          <li><NavLink to="/" onClick={logout}>
+            {`Logout ${currUser.user.firstName}`}
+          </NavLink></li>
+        </ul>
       </nav>
     );
   } else {
     return (
       <nav className="Nav">
-        <NavLink className="Nav-left" to="/">Jobly</NavLink>
-        <NavLink className="Nav-right" to="/login">Login</NavLink>
-        <NavLink className="Nav-right" to="/signup">Sign Up</NavLink>
+        <NavLink className="Nav-title" to="/">Jobly</NavLink>
+        <ul>
+          <li><NavLink to="/login">Login</NavLink></li>
+          <li><NavLink to="/signup">Sign Up</NavLink></li>
+        </ul>
       </nav>
     );
   }

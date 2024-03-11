@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import "./LoginForm.css";
 import { useNavigate } from "react-router-dom";
 
 /**Displays login form.
@@ -52,8 +53,8 @@ function LoginForm({ login }) {
       <div className="container col-md-6 offset-md-3 col-lg-4 offset-lg-4">
         <h3 className="mb-3">Log In</h3>
 
-        <form className="LoginForm" onSubmit={handleSubmit}>
-          <div>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
             <label htmlFor="Login-username">Username:</label>
             <input
               id="Login-username"
@@ -62,7 +63,7 @@ function LoginForm({ login }) {
               onChange={handleChange}
             />
           </div>
-          <div>
+          <div className="mb-3">
             <label htmlFor="Login-password">Password:</label>
             <input
               id="Login-password"
