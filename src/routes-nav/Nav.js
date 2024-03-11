@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import "./Nav.css";
-import userContext from "./userContext";
+import userContext from "../auth/userContext";
 
 /** Nav: links to each endpoint.
  *

@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
-import Nav from "./Nav";
-import RoutesList from "./RoutesList";
-import userContext from "./userContext";
-import JoblyApi from "./api";
+import Nav from "./routes-nav/Nav";
+import RoutesList from "./routes-nav/RoutesList";
+import userContext from "./auth/userContext";
+import JoblyApi from "./api/api";
 import { jwtDecode } from "jwt-decode";
 
 /** App for Jobly
