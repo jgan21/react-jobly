@@ -19,16 +19,17 @@ function CompanyCard({ companyData }) {
   const { name, description, logoUrl, handle } = companyData;
 
   return (
-    <Link className="CompanyCard-link" to={`/companies/${handle}`}>
-      <div className="CompanyCard-container">
-        <h3>{name}</h3>
-        <p>{description}</p>
-        {logoUrl !== null &&
+    <Link className="CompanyCard card" to={`/companies/${handle}`}>
+      <div className="card-body CompanyCard">
+        <h6 className="card-title">
+          {name}
+          {logoUrl !== null &&
           <img
             src={logoUrl}
-            alt={name}/>
-
-        }
+            alt={name}
+            className="float-end ms-5"/>}
+        </h6>
+        <p><small>{description}</small></p>
       </div>
     </Link>
   );
