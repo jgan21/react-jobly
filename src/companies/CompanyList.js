@@ -2,7 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import SearchForm from "../search/SearchForm";
 import CompanyCard from "./CompanyCard";
 import JoblyApi from "../api/api";
-import debounce from "lodash/debounce";
+
 
 /** CompanyList - list all companies
  *

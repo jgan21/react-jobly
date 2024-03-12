@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo, useCallback } from "react";
+import React, { useState } from "react";
 import debounce from "lodash/debounce";
 import "./SearchForm.css";
 
@@ -29,8 +29,6 @@ function SearchForm({ handleSearch }) {
   /** Send to parent component to handle when form is submitted  */
 
   const debouncedHandleSearch = debounce(handleSearch, 500);
-
-  // console.log("debouncedHandleSearch", debouncedHandleSearch);
 
   // useEffect(function cancelDebounce(){
   //  return debouncedHandleSearch.cancel();
