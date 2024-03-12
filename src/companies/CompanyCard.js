@@ -20,7 +20,7 @@ function CompanyCard({ companyData }) {
 
   return (
     <Link className="CompanyCard card" to={`/companies/${handle}`}>
-      <div className="card-body CompanyCard">
+      <div className="card-body row justify-content-center">
         <h6 className="card-title">
           {name}
           {logoUrl !== null &&

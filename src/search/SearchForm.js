@@ -37,17 +37,23 @@ function SearchForm({ handleSearch }) {
   // }, []);
 
   return (
-    <div>
-      <form className="SearchForm">
-        <input
-          className="SearchForm-input"
-          type="text"
-          name="search"
-          placeholder="Enter search term.."
-          value={searchTerm}
-          onChange={handleChange}>
-        </input>
-        {/* <button className="SearchForm-btn">Submit</button> */}
+    <div className="SearchForm mb-4">
+      <form>
+        <div className="row justify-content-center gx-0">
+          <div className="col-8">
+            <input
+              className="form-control form-control-md"
+              type="text"
+              name="search"
+              placeholder="Enter search term.."
+              value={searchTerm}
+              onChange={handleChange}
+            />
+          </div>
+          <div className="col-auto">
+            <button type="submit" className="btn btn-md btn-primary">Submit</button>
+          </div>
+        </div>
       </form>
     </div>
   );

@@ -1,7 +1,7 @@
 nav {
   display: flex;
   justify-content: space-between;
-  background-color: white;
+  background-color: seashell;
   border-bottom: 2px solid rgb(234, 227, 227);
   padding: 4px 10px 4px 10px;
 }
