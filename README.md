@@ -8,7 +8,7 @@
     <br />
     <br />
     <!-- To start a screen record on Mac: Shift + Cmd + 5 -->
-    <img src="public/joblyDemo.gif" alt="Demo recording">
+    <img src="public/joblyDemo1.gif" alt="Demo recording">
     <br />
     <br />
     <a href="https://jia-jobly.onrender.com" target="_blank">View Demo</a>
