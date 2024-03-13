@@ -26,7 +26,9 @@ function Homepage() {
     <div className="Homepage">
       <div className="container text-center">
         <h1 className="mb-4 fw-bold">Jobly</h1>
-        <p className="lead">All the jobs in one, convenient place.</p>
+        <p className="lead">
+          "Discover Your Perfect Job: Every Opportunity, One Easy Platform."
+        </p>
         {currUser && <h1>{`Welcome ${currUser.user.firstName}`}</h1>}
       </div>
       {!isLoggedIn &&
