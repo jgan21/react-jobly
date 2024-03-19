@@ -11,7 +11,7 @@
     <img src="public/joblyDemo1.gif" alt="Demo recording">
     <br />
     <br />
-    <a href="https://jia-jobly.onrender.com" target="_blank">View Demo</a>
+    <a href="https://jobly.jiaronggan.com" target="_blank">View Demo</a>
     <a href="https://github.com/jgan21/express-jobly" target="_blank">Jobly Backend Repo</a>
   </p>
 </div>
@@ -56,7 +56,7 @@ Jobly is a full-stack Javascript application and was built with a React frontend
 
 This repo is the frontend but you can find the backend code [here](https://github.com/jgan21/jobly-backend).
 
-You can log into the [demo site](https://jia-jobly.onrender.com/) with the following credentials:
+You can log into the [demo site](https://jobly.jiaronggan.com/) with the following credentials:
 - Username: `guest`
 - Password: `password`
 
@@ -149,7 +149,7 @@ Project Link (Frontend): [https://github.com/jgan21/react-jobly](https://github.
 
 Project Link (Backend): [https://github.com/jgan21/jobly-backend](https://github.com/jgan21/jobly-backend)
 
-Live Demo: [https://jia-jobly.onrender.com/](https://jia-jobly.onrender.com/)
+Live Demo: [https://www.jobly.jiaronggan.com/](https://www.jobly.jiaronggan.com/)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
